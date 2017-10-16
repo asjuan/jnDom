@@ -1,0 +1,30 @@
+{
+  "name": "jndom",
+  "version": "1.0.0",
+  "description": "Minimal MVx like approach to control HTML DOM elements",
+  "main": "index.js",
+  "scripts": {
+    "watch": "webpack --progress --watch",
+    "start": "webpack-dev-server --open",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asjuan/jnDom.git"
+  },
+  "keywords": [
+    "DOM Manipulation"
+  ],
+  "author": "Jalsu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asjuan/jnDom/issues"
+  },
+  "homepage": "https://github.com/asjuan/jnDom#readme",
+  "devDependencies": {
+    "@types/jasmine": "^2.6.0",
+    "ts-loader": "^2.3.7",
+    "webpack": "^3.7.1",
+    "webpack-dev-server": "^2.9.2"
+  }
+}

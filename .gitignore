@@ -1,0 +1,5 @@
+
+# Dependency directories
+node_modules/
+tests/lib/
+tests/spec/*.js
