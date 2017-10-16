@@ -9,15 +9,20 @@ export interface DomCommand {
 
 export class Presenter {
     action: DomCommand;
-    constructor(command: DomCommand) {
-        this.action = command;
+    constructor(elementId: string, command: DomCommand = null) {
+        if (command) {
+            this.action = command;
+        }
+        else {
+            this.action = new ConcreteDom(elementId);
+        }
     };
     execute = function (action: (DomCommand) => void) {
         action(this.action);
     }
 }
 
-export class DomAction implements DomCommand {
+export class ConcreteDom implements DomCommand {
     elementId: string;
 
     constructor(elementId: string) {
@@ -25,7 +30,7 @@ export class DomAction implements DomCommand {
     }
 
     appendToSelect(value: string, label: string) {
-        let el = <HTMLSelectElement> document.getElementById(this.elementId);
+        let el = <HTMLSelectElement>document.getElementById(this.elementId);
         let option = document.createElement('option');
         option.text = label;
         option.value = value;
@@ -36,19 +41,19 @@ export class DomAction implements DomCommand {
         el.setAttribute('value', value);
     }
     removeAll() {
-        let el = <HTMLSelectElement> document.getElementById(this.elementId);
+        let el = <HTMLSelectElement>document.getElementById(this.elementId);
         let i;
-        for (i = el.options.length-1; i>=0;i--){
+        for (i = el.options.length - 1; i >= 0; i--) {
             el.remove(i);
         }
     }
     readSelected(): string {
-        let el = <HTMLSelectElement> document.getElementById(this.elementId);
+        let el = <HTMLSelectElement>document.getElementById(this.elementId);
         let pos = el.selectedIndex;
         return el.options[pos].value;
     }
     chooseOption(pos: number) {
-        let el = <HTMLSelectElement> document.getElementById(this.elementId);
+        let el = <HTMLSelectElement>document.getElementById(this.elementId);
         el.selectedIndex = pos;
 
     }

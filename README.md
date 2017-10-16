@@ -1,7 +1,7 @@
 Summary
 -------
 
-jndom implements the P part of MVP pattern. Aim is to create one presenter per DOM element. 
+jndom helps to control DOM elements. 
 
 This minimal approach is to quickly wireup and control DOM elements without any heavyweight library.
 

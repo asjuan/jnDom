@@ -1,4 +1,4 @@
-import { DomCommand, Presenter, DomAction } from '../../app/jndom';
+import { DomCommand, Presenter, ConcreteDom } from '../../app/jndom';
 import { FakeDivCmd } from './divCommand';
 import { FakeSelectCmd } from './selectCommand';
 
@@ -8,7 +8,7 @@ describe('Fake Div Element', () => {
 
   beforeEach(() => {
     command = new FakeDivCmd('1');
-    presenter = new Presenter(command);
+    presenter = new Presenter(null, command);
   });
 
   it('should write 5 to div', () => {
@@ -33,7 +33,7 @@ describe('Fake Select Element', () => {
 
   beforeEach(() => {
     command = new FakeSelectCmd();
-    presenter = new Presenter(command);
+    presenter = new Presenter(null, command);
   });
 
   it('should append a letter to list and read', () => {
@@ -64,11 +64,11 @@ describe('Fake Select Element', () => {
 
 describe('Actual Div Element', () => {
   let presenter: Presenter;
-  let cmd: DomAction;
+  let cmd: ConcreteDom;
 
   beforeEach(() => {
-    cmd = new DomAction('Div1');
-    presenter = new Presenter(cmd);
+    cmd = new ConcreteDom('Div1');
+    presenter = new Presenter(null, cmd);
   });
 
   it('should write 5 to div', () => {
@@ -82,11 +82,11 @@ describe('Actual Div Element', () => {
 
 describe('Actual Select Element', () => {
   let presenter: Presenter;
-  let command: DomAction;
+  let command: ConcreteDom;
 
   beforeEach(() => {
-    command = new DomAction('sampleOptions');
-    presenter = new Presenter(command);
+    command = new ConcreteDom('sampleOptions');
+    presenter = new Presenter('sampleOptions');
   });
 
   it('should append a letter to list and read', () => {
@@ -113,7 +113,7 @@ describe('Actual Select Element', () => {
     });
     expect(command.readSelected()).toEqual('b');
   });
-  
+
   afterEach(() => {
     command.removeAll();
   });
