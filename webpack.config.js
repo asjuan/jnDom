@@ -1,17 +1,25 @@
 module.exports = {
-    devtool: 'inline-source-map',
-    entry: './tests/spec/jndomspec.ts',
-    output: {
-      filename: './tests/spec/jndomspec.js'
-    },
-    resolve: {
-      // Add `.ts` and `.tsx` as a resolvable extension.
-      extensions: ['.ts', '.tsx', '.js'] // note if using webpack 1 you'd also need a '' in the array as well
-    },
-    module: {
-      loaders: [ // loaders will work with webpack 1 or 2; but will be renamed "rules" in future
-        // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-        { test: /\.tsx?$/, loader: 'ts-loader' }
-      ]
-    }
+  mode: "development",
+  entry: "./src/index.js",
+  output: {
+    filename: './app.js'
+  },
+  resolve: {
+    // Add `.ts` and `.tsx` as a resolvable extension.
+    extensions: ['.js'] // note if using webpack 1 you'd also need a '' in the array as well
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015']
+          }
+        }
+      }
+    ]
   }
+}
