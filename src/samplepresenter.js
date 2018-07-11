@@ -1,9 +1,21 @@
-var present = function(model, view) {
+var present = function newPresenter(m, v) {
+    v.click('language', function () {
+       v.write(m.greeting);
+    });
+    v.click('clear', function () {
+       v.write('');
+    })
     return {
-        "login": function () {
-            model.isLoginVisible = true;
-            view.update();
+       'initDefault': function () {
+        },
+        'initEnglish': function () {
+            m.greeting = 'Hello world';
+            
+        },
+        'initSpanish': function () {
+            m.greeting = 'Hola mundo';
         }
-    }
+    };
+    
 }
 module.exports = present;
