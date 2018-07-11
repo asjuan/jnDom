@@ -1,3 +1,5 @@
-var model = {
-    isLoginVisible: false
-};
+module.exports = function newModel() {
+    return {
+        'greeting': 'none'
+    };
+}
