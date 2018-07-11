@@ -1,7 +1,12 @@
-var view = function (engine) {
+module.exports = function newView() {
     return {
-        "update": function () {
-
-        }
-    };
-}
+      'write': function(value){
+        var d = document.getElementById("board");
+        d.innerHTML = value;
+      },
+      'click': function(id, cb){
+        var b = document.getElementById(id);
+        b.addEventListener('click', cb, false)
+      }
+    }
+};
